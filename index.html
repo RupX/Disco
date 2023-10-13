@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Collage</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            padding: 20px;
+            animation: colorChange 2s infinite alternate;
+            cursor: pointer; /* Add cursor style to make it interactive */
+        }
+
+        .collage {
+            display: flex; /* Use flexbox for the image collage */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .collage a {
+            flex: 1 0 25%; /* Adjust the width of each image element */
+            margin: 10px; /* Adjust the margin between each image */
+            animation: imageAnimation 1s ease-in-out; /* Add animation to the image elements */
+        }
+
+        @keyframes imageAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(50%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .collage a img {
+            width: 100%; /* Set the image width to auto for responsive sizing */
+            height: auto; /* Set the image height to auto for responsive sizing */
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: violet;
+            }
+            50% {
+                color: yellow;
+                transform: scale(1.2); /* Add scale transform for animation */
+            }
+            100% {
+                color: blue;
+            }
+        }
+
+        .signup-tab {
+            position: fixed;
+            top: 00;
+            left: 2;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            animation: bounceAnimation 3s infinite; /* Add animation to the signup tab */
+            font-weight: bold; /* Make the signup tab bold */
+        }
+
+        .signup-tab:hover {
+            background-color: #555;
+        }
+
+        /* Add the following CSS to make the signup tab colorful */
+        .signup-tab {
+            background-color: #ff0000; /* You can change the color code to your desired color */
+        }
+
+        @keyframes bounceAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px) scale(1.1);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .gif-side {
+            position: fixed;
+            top: 00;
+            left: 100;
+            width: 50%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .gif-side img {
+            width: 20%;
+            height: 15%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="background_video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="content">
+        <h1>Welcome to our Site</h1>
+        <div class="collage">
+            <!-- Add your image elements here -->
+            <a href="image1.jpg" target="_blank">
+                <img src="image1.jpg" alt="Image 1" onclick="playSound('sound1.mp3')" style="animation-delay: 0s;">
+            </a>
+            <a href="image2.jpg" target="_blank">
+                <img src="image2.jpg" alt="Image 2" onclick="playSound('sound1.mp3')" style="animation-delay: 0.2s;">
+            </a>
+            <a href="image3.jpg" target="_blank">
+                <img src="image3.jpg" alt="Image 3" onclick="playSound('sound1.mp3')" style="animation-delay: 0.4s;">
+            </a>
+            <a href="image4.jpg" target="_blank">
+                <img src="image4.jpg" alt="Image 4" onclick="playSound('sound1.mp3')" style="animation-delay: 0.6s;">
+            </a>
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+
+    <a href="signup.html" class="signup-tab">
+        Sign up for more
+    </a>
+
+    <div class="signup-tab">
+        Sign up for more
+    </div>
+    <a href="signup.html" class="signup-tab" onclick="window.open('signup.html','_blank')">
+        Sign up for more
+    </a>
+
+    <!-- Add this code to position the gif on the side -->
+    <div class="gif-side">
+        <img src="side.gif" alt="Side Gif">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function playSound(soundFile) {
+            var audio = new Audio(soundFile);
+            audio.play();
+        }
+    </script>
+</body>
+</html>
